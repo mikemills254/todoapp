@@ -7,6 +7,8 @@ import Tasks from './Screens/Tasks';
 import User from './Screens/User';
 import Add from './Screens/Add'
 import styles from './Styles';
+import { StatusBar } from 'expo-status-bar';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -14,9 +16,9 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-    <Tab.Navigator style={styles.navBar}
+    <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: "blue",
+        tabBarActiveTintColor: "#30D5C8",
         tabBarInactiveTintColor: "black",
         tabBarShowLabel: false,
         headerShown: false,
@@ -30,7 +32,7 @@ export default function App() {
              iconName = focused ? "list-circle-sharp" : "list"
           }else if(route.name === "Add"){
             size = focused ? size + 5 : size + 2
-            iconName = focused ? "add-circle" : "add"
+            iconName = focused ? "add-circle" : "ios-add-circle-outline"
           }else if(route.name === "User"){
             size = focused ? size + 5 : size + 2
             iconName = focused ? "person-circle-sharp" : "person-circle-sharp"
@@ -41,10 +43,10 @@ export default function App() {
       })}
     >
     <Tab.Screen name='Home' component={Home}/>
-    <Tab.Screen name='Tasks' component={Tasks} />
     <Tab.Screen name='Add' component={Add}/>
-    <Tab.Screen name='User' component={User}/>
+    <Tab.Screen name='Tasks' component={Tasks} />
     </Tab.Navigator>
   </NavigationContainer>
   );
 }
+

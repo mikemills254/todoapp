@@ -5,7 +5,11 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./asset/splash.png",
+      "backgroundColor": "#30D5C8"
+    }
   },
   "name": "todoapp"
 }
