@@ -51,15 +51,14 @@ const styles = StyleSheet.create({
     color: "white"
   },
   ProgressBar: {
-    height: 15,
-    width: '100%',
+    height: 10,
+    width: '90%',
     flexDirection: "row",
-    backgroundColor: 'white',
-    borderWidth: 1,
+    backgroundColor: '#28C3B8',
     borderRadius: 10,
   },
   absoluteFill: {
-    backgroundColor: "#91A3B0",
+    backgroundColor: "#007F75",
     width: "70%",
     borderRadius: 10
   },

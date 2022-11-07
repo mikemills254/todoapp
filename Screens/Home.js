@@ -21,7 +21,7 @@ const Home = () => {
                 <Animated.View style={styles.absoluteFill}/>
                 </View>
             </TouchableOpacity>
-            <Text style={styles.TodaysT}>Today's Tasks</Text>
+            <Text style={styles.TodaysT}>My Habits</Text>
             <View style={styles.tasksBoard}>
 
             </View>
