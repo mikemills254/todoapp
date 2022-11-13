@@ -25,8 +25,8 @@ export default function App() {
         tabBarIcon: ({focused, size, color}) => {
           let iconName;
           if(route.name === "Home"){
-            size = focused ? size + 5 : size + 2
-            iconName = focused ? "ios-home" : "ios-home-outline"
+            size = focused ? size + 4 : size + 2
+            iconName = focused ? "md-home-sharp" : "ios-home-outline"
           }else if(route.name === "Tasks"){
             size = focused ? size + 5 : size + 2
              iconName = focused ? "list-circle-sharp" : "list"
