@@ -4853,6 +4853,11 @@ expo-react-native-shadow@^1.0.3:
   resolved "https://registry.npmjs.org/expo-react-native-shadow/-/expo-react-native-shadow-1.0.3.tgz"
   integrity sha512-0CnsKAzfO9cMlztyijiR2tz+D2Jilxt/3Uq4ByhQoG8HckSZG8tE+IHO5axoRkDyaK/gUefwOMB1e4fVsUAt/w==
 
+expo-secure-store@~11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.3.0.tgz#7f2f05f6aa6669f2d31e034561aa6b3d530a71a0"
+  integrity sha512-k8dw1v7MCHIv7MnAIBXqyqplJo0I5MmRjZXO7bsVPb/BqWvvfBo/JAFdM6K60X6szh+13TWgxwx6GxAkCJVUnQ==
+
 expo-splash-screen@~0.16.2:
   version "0.16.2"
   resolved "https://registry.npmjs.org/expo-splash-screen/-/expo-splash-screen-0.16.2.tgz"
@@ -8971,6 +8976,11 @@ react-native-bootsplash@^4.3.2:
     fs-extra "^10.1.0"
     jimp "^0.16.1"
     picocolors "^1.0.0"
+
+react-native-calendar-list@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/react-native-calendar-list/-/react-native-calendar-list-1.0.1.tgz"
+  integrity sha512-ofyyIIU+amoVg6r7o6oGyT4O8l0UF2mEh9XQXGy0i9CMRiD5B/JLFSn6HfV9v7AuRqn291XS8WLIhQGqyYUVFg==
 
 react-native-circular-progress-indicator@^4.4.0:
   version "4.4.0"

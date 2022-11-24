@@ -8,7 +8,7 @@ import Animated, { color } from "react-native-reanimated";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
-const greetingMessage = () => {
+export const greetingMessage = () => {
     const date = new Date();
     const hours = date.getHours();
     let timeNow
@@ -92,7 +92,6 @@ const TasksProgress = () =>{
             width={5}
             fill={90}
             tintColor="#30D5C8"
-            // onAnimationComplete={() => console.log('onAnimationComplete')}
             backgroundColor="#208e4e"
             style={{marginRight: 20, marginTop: 5}}
             />
@@ -126,8 +125,7 @@ function Tasks(){
                         <TasksProgress/>
                     </View>
                     <View style={{
-                        flexDirection: "row", 
-                        // backgroundColor: "green", 
+                        flexDirection: "row",  
                         alignItems: "center", 
                         width: 100,
                         position: "absolute",
@@ -154,7 +152,6 @@ function Tasks(){
             </View>
             <View style={{
                 flexDirection: "row", 
-                // backgroundColor: "green", 
                 alignItems: "center", 
                 width: 100,
                 position: "absolute",
@@ -181,7 +178,6 @@ function Tasks(){
             </View>
             <View style={{
                 flexDirection: "row", 
-                // backgroundColor: "green", 
                 alignItems: "center", 
                 width: 100,
                 position: "absolute",
@@ -207,8 +203,7 @@ function Tasks(){
                 <TasksProgress/>
             </View>
             <View style={{
-                flexDirection: "row", 
-                // backgroundColor: "green", 
+                flexDirection: "row",  
                 alignItems: "center", 
                 width: 100,
                 position: "absolute",
@@ -225,16 +220,19 @@ function Tasks(){
 
 const Home = () => {
     return(
-        <View style={styles.HomeContainer}>
-        <Greeting/>
-        <Progress/>
-            <Text style={styles.TodaysT}>Categories</Text>
-        <Category/>
-        <Text style={styles.TodaysT2} >Ongoing Tasks</Text>
-        <Tasks/>
-        </View>
+        <SafeAreaView>
+            <View style={styles.HomeContainer}>
+            <Greeting/>
+            <Progress/>
+                <Text style={styles.TodaysT}>Categories</Text>
+            <Category/>
+            <Text style={styles.TodaysT2} >Ongoing Tasks</Text>
+            <Tasks/>
+            </View>
+        </SafeAreaView>
     )
 
 }
+
 
 export default Home;

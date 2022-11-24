@@ -21,12 +21,10 @@ const styles = StyleSheet.create({
     padding: "red"
   },
   HomeContainer: {
-    flex: 1,
-    // backgroundColor: "#30D5C8",
+    flex: 1
   },
   greet: {
     marginTop: 40,
-    // backgroundColor: "#ff0000",
     margin: 5,
     padding: 7,
     flexDirection: "row",
@@ -84,13 +82,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#ebf6f7",
     height: 100,
     margin: 10,
-    // paddingLeft: 10,
     borderRadius: 5,
     width: 120,
     elevation: 2
   },
   categ: {
-    // backgroundColor: "blue",
     height: 70,
     alignItems: "center",
     justifyContent: "space-around"
@@ -117,18 +113,14 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: "center",
     justifyContent: "space-between",
-    // marginTop: 100
-
   },
   TodaysT2: {
     fontSize: 20,
     fontWeight: "bold",
-    // marginTop: 100
     margin: 10,
     color: "#30D5C8",
   },
   tasksHeader: {
-    // backgroundColor: "red",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -148,18 +140,14 @@ const styles = StyleSheet.create({
     color: "white"
   },
   tasksBody: {
-    // backgroundColor: "blue",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     padding: 5,
     height: 90,
-    // marginTop: 5
   },
   tasksMember: {
     flexDirection: "row",
-    // backgroundColor: "red",
-    // position: "absolute",
     marginLeft: 15,
     height: 50,
     width: 100,
@@ -168,6 +156,62 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginTop: -20
   },
+  //Login styles: start
+  logo: {
+    width: '70%',
+    maxWidth: 300,
+    maxHeight: 200,
+    marginVertical: 20,
+    // backgroundColor: "red"
+
+  },
+  InputcContainer: {
+    backgroundColor: "white",
+    width: "100%",
+
+    borderColor: "#F5F5F5",
+    borderWidth: 1,
+    borderRadius: 5,
+
+    paddingHorizontal: 20,
+    marginVertical: 5
+  },
+  input: {height: 40, backgroundColor: "white"},
+  CustomButton: {
+    backgroundColor: "#30D5C8",
+    width: "100%",
+    padding: 15,
+    marginVertical: 5,
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  text: {
+    fontWeight: "bold",
+    color: "white"
+  },
+  CustomButton_PRIMARY: {
+    backgroundColor: "#30D5C8"
+  },
+  CustomButton_TERTIARY: {
+    backgroundColor: "#F5F5F5",
+  },
+  CustomButton_SECONDARY: {
+    width: "20%",
+    marginHorizontal: 10,
+    display: "flex"
+  },
+  text_TERTIARY: {
+    color: "gray"
+  },
+
+  //login styles: end
+  // SignUp Styles
+  SignUpTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    margin: 40,
+    color: "#30D5C8"
+    },
 
 });
 

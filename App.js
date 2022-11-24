@@ -6,17 +6,19 @@ import Home from './Screens/Home';
 import Tasks from './Screens/Tasks';
 import User from './Screens/User';
 import Add from './Screens/Add'
+import Login from './Screens/LoginScreen/LoginScreen';
+import SignUpScreen from './Screens/SignUpScreen/SignUpScreen';
 import styles from './Styles';
 import { StatusBar } from 'expo-status-bar';
 
 
 
-const Tab = createBottomTabNavigator();
+const Stack = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-    <Tab.Navigator
+    {/* <Stack.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: "#30D5C8",
         tabBarInactiveTintColor: "black",
@@ -42,10 +44,12 @@ export default function App() {
         
       })}
     >
-    <Tab.Screen name='Home' component={Home}/>
-    <Tab.Screen name='Add' component={Add}/>
-    <Tab.Screen name='Tasks' component={Tasks} />
-    </Tab.Navigator>
+    <Stack.Screen name='Home' component={Home}/>
+    <Stack.Screen name='Add' component={Add}/>
+    <Stack.Screen name='Tasks' component={Tasks} />
+    </Stack.Navigator> */}
+    {/* <Login/> */}
+    <SignUpScreen/>
   </NavigationContainer>
   );
 }
