@@ -12,6 +12,8 @@ import expo.modules.ReactActivityDelegateWrapper;
 import android.os.Bundle;
 import com.zoontek.rnbootsplash.RNBootSplash;
 
+import android.os.Bundle;
+
 public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,11 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "main";
   }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(null);
+}
 
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. There the RootView is created and

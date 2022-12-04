@@ -6,21 +6,23 @@ import Logo from '../../asset/splash.png'
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import CustomButton from "../../Components/CustomButton/CustomButton"
 import SocialSignBtn from "../../Components/SocialSignButton/SocialSignBtn";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
     const [Username, setUsername] = useState('')
     const [Password, setPassword] = useState('')
 
     const {height} = useWindowDimensions();
+    const navigation = useNavigation();
 
     const OnsigninPressed = () => {
-        console.warn("Sign In")
+        navigation.navigate('Home')
     }
     const OnforgotPassword = () => {
-        console.warn("Forgot Password")
+        navigation.navigate('ForgotPass')
     }
     const OnsignUp = () => {
-        console.warn("Sign Up")
+        navigation.navigate('SignUp')
     }
     return(
             <View 
@@ -46,8 +48,9 @@ const Login = () => {
 
                         <CustomInput 
                             placeholder="Password" 
+                            value={Password}
                             setPassword={setPassword}
-                            secureTextEntry={true}
+                            secureTextEntry
                         />
                         <CustomButton text="Sign In" onPress={OnsigninPressed}/>
                         <CustomButton text="Forget Password ?" onPress={OnforgotPassword} type="TERTIARY"/> 

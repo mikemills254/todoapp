@@ -4,9 +4,10 @@ import styles from "../../Styles"
 import Ionic from "react-native-vector-icons/Ionicons"
 
 
-const CustomButton = ({onPress, text, type = 'PRIMARY', Icon, bgColor, fgColor}) => {
+const CustomButton = ({onPress, text, type = 'PRIMARY', Icon, bgColor, fgColor, clicked}) => {
   return (
     <Pressable 
+      clicked = {clicked}
       onPress={onPress} 
       style={
         [

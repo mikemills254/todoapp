@@ -1,238 +1,216 @@
-
-import { View, Text, Dimensions, } from "react-native";
-import { useState, setState} from "react"
+import React, { useState } from 'react'
+import { View, Text, Dimensions, SafeAreaView, ScrollView, TouchableOpacity, Pressable, Button } from "react-native";
 import styles from "../Styles";
-import Ionic from "react-native-vector-icons/Ionicons";
-import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import CustomTasks from '../Components/CustomTasks/CustomTasks';
 import Animated, { color } from "react-native-reanimated";
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import Ionic from "react-native-vector-icons/Ionicons";
+import AddButton from "../Components/CustomAddButton/AddButton"
+import CustomTask from '../Components/Tasks/CustomTask';
 
 
-export const greetingMessage = () => {
-    const date = new Date();
-    const hours = date.getHours();
-    let timeNow
-    if (hours < 12) {
-      timeNow = "Good Morning";
-    } else if (hours >= 12 && hours < 17) {
-      timeNow = "Good Afternoon";
-    } else if (hours >= 17 && hours < 20) {
-      timeNow = "Good Evening";
-    } else {
-      timeNow = "Sleep Well";
-    }
-    return timeNow;
-  };
+const GreetingMessage = () => {
+  const date = new Date();
+  const hours = date.getHours();
+  let timeNow
+  if (hours < 12) {
+    timeNow = "Good Morning";
+  } else if (hours >= 12 && hours < 17) {
+    timeNow = "Good Afternoon";
+  } else if (hours >= 17 && hours < 20) {
+    timeNow = "Good Evening";
+  } else {
+    timeNow = "Sleep Well";
+  }
+  return timeNow ;
+};
 
-function Greeting(){
-    const name = "Mike";
-    return (
-    <View style={styles.greet}>
-        <Text style={styles.greeting}>
-            {greetingMessage()} {name}
-        </Text>
-        <Ionic name="person-circle-sharp" size={30}/>
-    </View>
-)
+const DrawerIcon = () =>{
+  const MenuPress = () =>{
+    console.warn("Drawer");
+  }
+  return(
+      <Ionic 
+        name='menu-outline' size={35}
+        onPress={MenuPress}
+          style={{marginTop: 30, marginLeft: 5, color: "#30D5C8", fontWeight: "bold"}}
+        />
+  )
 }
 
-function Progress(){
-    return(
-        <TouchableOpacity style={styles.ProgressBtn}>
-            <Text>Your Progress</Text>
-            <Ionic name="calendar" style={styles.calender}/>
-            <View style={styles.ProgressBar}>
-            <Animated.View style={styles.absoluteFill}/>
-            </View>
-        </TouchableOpacity>
-    )
+const Progress = ({onpress}) => {
+  const name = "Mike"
+  return(
+    <Pressable onPress={onpress}style={styles.todosProgress}>
+      <Text style={styles.greeting}>
+        <GreetingMessage/> {name}
+      </Text>
+      <View style={styles.ProgressBar}>
+        <Animated.View style={styles.absoluteFill}/>
+      </View>
+    </Pressable>
+  )
 }
+
+const Pressables = ({text, onPress, textColor, pressableColor}) =>{
+  return(
+    <Pressable 
+    onPress={onPress} 
+    style={
+      [
+        styles.categoryPress, 
+        pressableColor ? {backgroundColor: pressableColor} : {} 
+      ]
+    }>
+      <Text style={{color: "white", fontWeight: "600"}}>{text}</Text>
+  </Pressable>
+  )
+}
+
+
 function Category(){
-    return(
-            <ScrollView 
-                horizontal={true} 
-                scrollEventThrottle={16}
-                showsHorizontalScrollIndicator = {false}
-                contentContainerStyle = {styles.scrollView}
-                style={{
-                    flexGrow: 0 , 
-                    flexDirection: "row" 
-                }
-                }>
-                <View style={styles.Category}>
-                    <Ionic name="ellipse-sharp" size={15} style={{marginLeft: 100, marginTop: 5, color: "green"}}></Ionic>
-                    <View style={styles.categ}>
-                        <Text style={{fontWeight: "bold", fontSize: 15}}>Personal</Text>
-                        <Text style={{fontSize: 10}}>10 jobs</Text>
-                    </View>
-                </View>
-                <View style={styles.Category}>
-                    <Ionic name="ellipse-sharp" size={15} style={{marginLeft: 100, marginTop: 5, color: "blue"}}></Ionic>
-                    <View style={styles.categ}>
-                        <Text style={{fontWeight: "bold", fontSize: 15}}>Work</Text>
-                        <Text style={{fontSize: 10}}>4 jobs</Text>
-                    </View>
-                    </View>
-                <View style={styles.Category}>
-                    <Ionic name="add" size={15} style={{marginLeft: 100, marginTop: 5, color: "green"}}></Ionic>
-                    <View style={styles.categ}>
-                        <Text style={{fontWeight: "bold", fontSize: 15}}>Create</Text>
-                    </View>
-                    </View>
-            </ScrollView>
-        
-    )
-}
+  const onCategoryPress = () =>{
+    console.warn('Open Category');
+  }
+  return(
+    <View>
+      <ScrollView 
+      horizontal={true} 
+      scrollEventThrottle={16}
+      showsHorizontalScrollIndicator = {false}
+      contentContainerStyle={styles.Category}
+      >
+        <Pressables text="Home" onPress={onCategoryPress}/>
+        <Pressables text="School" onPress={onCategoryPress}/>
+        <Pressables text="Job" onPress={onCategoryPress}/>
+        <Pressables text="Study" onPress={onCategoryPress}/>
 
-const TasksProgress = () =>{
-    const [value, setValue] = useState(100);
-    return(
-            <AnimatedCircularProgress
-            size={65}
-            width={5}
-            fill={90}
-            tintColor="#30D5C8"
-            backgroundColor="#208e4e"
-            style={{marginRight: 20, marginTop: 5}}
-            />
-    )
-}
-
-function Tasks(){
-    return(
-        <ScrollView 
-            horizontal={false} 
-            showsVerticalScrollIndicator = {false}
-            contentContainerStyle = {styles.scrollView2}
-            style={{
-                flexGrow: 0,
-                flexDirection: "column",
-
-            }}
-            >
-            <View style={styles.tasks}>
-                <TouchableOpacity>
-                    <View style={styles.tasksHeader}>
-                        <Text style={styles.tasksTitle}>Wallet App Design</Text>
-                        <Text style={styles.tasksDays}>4 days</Text>
-                    </View>
-                    <View style={styles.tasksBody}>
-                        <View style={styles.tasksMember}>
-                            <Ionic name="person-circle-sharp" size={25}/>
-                            <Ionic name="person-circle-sharp" size={25}/>
-                            <Ionic name="person-circle-sharp" size={25}/>
-                        </View>
-                        <TasksProgress/>
-                    </View>
-                    <View style={{
-                        flexDirection: "row",  
-                        alignItems: "center", 
-                        width: 100,
-                        position: "absolute",
-                        marginTop: 90
-                    }}>
-                        <Ionic name="alarm" size={20} style={{color: "green"}}></Ionic>
-                        <Text> Mon & Thu</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.tasks}>
-            <TouchableOpacity>
-            <View style={styles.tasksHeader}>
-                <Text style={styles.tasksTitle}>Web Scrapping</Text>
-                <Text style={styles.tasksDays}>6 days</Text>
-            </View>
-            <View style={styles.tasksBody}>
-                <View style={styles.tasksMember}>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                </View>
-                <TasksProgress/>
-            </View>
-            <View style={{
-                flexDirection: "row", 
-                alignItems: "center", 
-                width: 100,
-                position: "absolute",
-                marginTop: 90
-            }}>
-                <Ionic name="alarm" size={20} style={{color: "green"}}></Ionic>
-                <Text> Mon & Thu</Text>
-            </View>
-        </TouchableOpacity>
-            </View>
-            <View style={styles.tasks}>
-            <TouchableOpacity>
-            <View style={styles.tasksHeader}>
-                <Text style={styles.tasksTitle}>Home Decor</Text>
-                <Text style={styles.tasksDays}>2 days</Text>
-            </View>
-            <View style={styles.tasksBody}>
-                <View style={styles.tasksMember}>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                </View>
-                <TasksProgress/>
-            </View>
-            <View style={{
-                flexDirection: "row", 
-                alignItems: "center", 
-                width: 100,
-                position: "absolute",
-                marginTop: 90
-            }}>
-                <Ionic name="alarm" size={20} style={{color: "green"}}></Ionic>
-                <Text> Mon & Thu</Text>
-            </View>
-        </TouchableOpacity>
-            </View>
-            <View style={styles.tasks}>
-            <TouchableOpacity>
-            <View style={styles.tasksHeader}>
-                <Text style={styles.tasksTitle}>Dashboard & App Design</Text>
-                <Text style={styles.tasksDays}>9 days</Text>
-            </View>
-            <View style={styles.tasksBody}>
-                <View style={styles.tasksMember}>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                    <Ionic name="person-circle-sharp" size={25}/>
-                </View>
-                <TasksProgress/>
-            </View>
-            <View style={{
-                flexDirection: "row",  
-                alignItems: "center", 
-                width: 100,
-                position: "absolute",
-                marginTop: 90
-            }}>
-                <Ionic name="alarm" size={20} style={{color: "green"}}></Ionic>
-                <Text> Mon & Thu</Text>
-            </View>
-        </TouchableOpacity>
-            </View>
-        </ScrollView>
-    )
+        <AddButton type="SECONDARY" Icon="add"/>
+          
+      </ScrollView>
+    </View>
+      
+  )
 }
 
 const Home = () => {
-    return(
-        <SafeAreaView>
-            <View style={styles.HomeContainer}>
-            <Greeting/>
-            <Progress/>
-                <Text style={styles.TodaysT}>Categories</Text>
-            <Category/>
-            <Text style={styles.TodaysT2} >Ongoing Tasks</Text>
-            <Tasks/>
-            </View>
-        </SafeAreaView>
-    )
+  const onCategoryCreate = () =>{
+    console.warn('Create Category');
+  }
+  const OnProgress = () => {
+    console.warn("Hello Progress");
+  }
+  const name = "Mike"
 
+  return (
+      <View style={{padding: 10, flex: 1}}>
+        <DrawerIcon/>
+        <Progress onpress={OnProgress}/>
+        <Text
+          style={{
+            position: "absolute",
+            fontSize: 15,
+            fontWeight: 'bold',
+            color: "#007F75",
+            top: "25%",
+            marginLeft: 15
+          }}
+          >
+          Your Habits
+        </Text>
+        <Category/>
+        <Text 
+          style={
+            {
+              position: "absolute", 
+              top: "37%", 
+              marginLeft: 10,
+              fontSize: 15,
+              fontWeight: 'bold',
+              color: "#007F75"
+            }}
+            >
+              Your Tasks
+        </Text>
+        <View style={{flex: 1}}>
+            <ScrollView 
+              horizontal={false}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ flexGrow: 1, padding: 10}}  
+            >
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              <CustomTask 
+                title="Android App"
+                days="4 days"
+                schedule="Mon & Fri"
+                onPress={onCategoryCreate}
+              />
+              
+
+            </ScrollView>
+        </View>
+        <AddButton
+          Icon="add"
+          type="PRIMARY"
+          onPress={OnProgress}
+        />           
+
+      </View>
+  )
 }
 
 
-export default Home;
+
+export default Home

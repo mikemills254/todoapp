@@ -5,64 +5,42 @@ import styles from "../../Styles";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import CustomButton from "../../Components/CustomButton/CustomButton"
 import SocialSignBtn from "../../Components/SocialSignButton/SocialSignBtn";
-
-const SignUpScreen = () => {
-    const [Username, setUsername] = useState('')
-    const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('')
-    const [PassRepeat, setPassRepeat] = useState('')
+import { useNavigation } from '@react-navigation/native';
 
 
-    const OnRegisterPressed = () => {
-        console.warn("Register")
+const ConfirmEmail = () => {
+    const [code, setCode] = useState('')
+    const Navigation = useNavigation();
+
+    const OnConfirmPressed = () => {
+        Navigation.navigate('Home')
     }
-    const onTermsOfUsePressed = () => {
-        console.warn("Terms Of use")
-    }
-    const onPrivatePolicyPressed = () => {
-        console.warn("Private Policy")
+    const OnResendCode = () => {
+        console.warn("Resend Code")
     }
     const OnsignIn = () => {
-        console.warn("Sign  In")
+        Navigation.navigate('SignUp')
     }
     return(
         <View 
             style={{flex: 1,alignItems: "center",backgroundColor: "#F5F5F5",padding: 20,}}>
-                <Text style={styles.SignUpTitle}>Create An Account</Text>     
+                <Text style={styles.SignUpTitle}>Confirm Your Email</Text>     
                 <CustomInput 
-                    placeholder = "Enter Username" 
-                    value={Email} 
-                    setValue={setUsername}                            
+                    placeholder = "Confirmation code" 
+                    value={code} 
+                    setValue={setCode}                            
                 />
-                <CustomInput 
-                    placeholder = "Enter Email" 
-                    value={Username} 
-                    setValue={setEmail}                            
-                />
-
-                <CustomInput 
-                    placeholder="Enter Password" 
-                    value={Password}
-                    setPassword={setPassword}
-                    secureTextEntry={true}
-                />
-                <CustomInput 
-                    placeholder="Confirm Password" 
-                    value={PassRepeat}
-                    setPassword={setPassRepeat}
-                    secureTextEntry={true}
-                />
-                <CustomButton text="Register" onPress={OnRegisterPressed}/>
-                <Text style={{color: "gray", fontSize: 15, marginVertical: 10}}>
-                    By registering, confirm that you accept out
-                    <Text style={{color: "#FDB075"}} onPress={onTermsOfUsePressed}> terms of use</Text> and
-                    <Text style={{color: "#FDB075"}} onPress={onPrivatePolicyPressed}> privacy policy</Text>
-                    </Text>
-                <CustomButton text="----or----" type="TERTIARY"/>
-                <SocialSignBtn/>
+                
+                <CustomButton text="Confirm" onPress={OnConfirmPressed}/>
+                
                 <CustomButton 
-                    text="Have an Account? Sign In" 
+                    text="Back to Sign In" 
                     onPress={OnsignIn}
+                    type="TERTIARY"
+                />
+                <CustomButton 
+                    text="Resend Code" 
+                    onPress={OnResendCode}
                     type="TERTIARY"
                 />
 
@@ -70,4 +48,4 @@ const SignUpScreen = () => {
     )
 }
 
-export default SignUpScreen;
+export default ConfirmEmail;

@@ -34,24 +34,15 @@ const styles = StyleSheet.create({
   greeting: {
     fontWeight: "bold",
     fontSize: 20,
-    color: "#30D5C8",
+    color: "white",
   },
-  ProgressBtn: {
+  todosProgress: {
     backgroundColor: "#30D5C8",
-    flexDirection: "column",
-    padding: 10,
-    height: 150,
-    marginTop: 10,
-    margin: 10,
-    paddingBottom: 20,
-    shadowColor: "black",
-    shadowOffset: {width: 0, height: 3},
-    justifyContent: "space-between",
+    marginTop: 0,
     borderRadius: 10,
-    elevation: 1,
-    shadowColor: "#000",
-    shadowOffset: { width: 5, height: 1 },
-    shadowOpacity: 0.5,
+    padding: 10,
+    height: 100,
+    flexDirection: "column"
   },
   calender: {
     position: "absolute",
@@ -61,11 +52,13 @@ const styles = StyleSheet.create({
     color: "white"
   },
   ProgressBar: {
+    position: "relative",
     height: 10,
     width: '90%',
     flexDirection: "row",
     backgroundColor: '#28C3B8',
     borderRadius: 10,
+    marginTop: 40
   },
   absoluteFill: {
     backgroundColor: "#007F75",
@@ -79,22 +72,25 @@ const styles = StyleSheet.create({
     color: "#30D5C8",
   },
   Category: {
-    backgroundColor: "#ebf6f7",
-    height: 100,
-    margin: 10,
-    borderRadius: 5,
-    width: 120,
-    elevation: 2
+    marginTop: 20,
+    // backgroundColor: "red",
+    height: 120,
+    alignItems: "center",
+    justifyContent: "center",
   },
   categ: {
     height: 70,
     alignItems: "center",
     justifyContent: "space-around"
   },
-  scrollView: {
+  categoryPress: {
+    height: 50,
+    borderRadius: 5,
+    width: 70,
+    marginHorizontal: 10,
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: 20,
+    justifyContent: "center",
+    backgroundColor: "#007F75"
   },
   tasks: {
     backgroundColor: "#ebf6f7",
@@ -165,7 +161,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red"
 
   },
-  InputcContainer: {
+  InputContainer: {
     backgroundColor: "white",
     width: "100%",
 
@@ -198,10 +194,13 @@ const styles = StyleSheet.create({
   CustomButton_SECONDARY: {
     width: "20%",
     marginHorizontal: 10,
-    display: "flex"
+    // display: "flex"
   },
   text_TERTIARY: {
     color: "gray"
+  },
+  text_SECONDARY: {
+    color: "black"
   },
 
   //login styles: end
